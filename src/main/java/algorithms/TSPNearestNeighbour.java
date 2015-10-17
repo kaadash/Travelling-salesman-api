@@ -8,27 +8,28 @@ public class TSPNearestNeighbour
 {
     private int numberOfNodes;
     private Stack<Integer> stack;
-
+    private String path;
     public TSPNearestNeighbour()
     {
         stack = new Stack<Integer>();
     }
 
-    public void tsp(int adjacencyMatrix[][])
+    public String tsp(int adjacencyMatrix[][])
     {
         numberOfNodes = adjacencyMatrix[1].length - 1;
         int[] visited = new int[numberOfNodes + 1];
-        visited[1] = 1;
-        stack.push(1);
+        visited[0] = 1;
+        stack.push(0);
         int element, dst = 0, i;
         int min = Integer.MAX_VALUE;
         boolean minFlag = false;
-        System.out.print(1 + "\t");
+        path = 0 + "\t";
+//        System.out.print(1 + "\t");
 
         while (!stack.isEmpty())
         {
             element = stack.peek();
-            i = 1;
+            i = 0;
             min = Integer.MAX_VALUE;
             while (i <= numberOfNodes)
             {
@@ -47,12 +48,14 @@ public class TSPNearestNeighbour
             {
                 visited[dst] = 1;
                 stack.push(dst);
-                System.out.print(dst + "\t");
+                path += dst + "\t";
+//                System.out.print(dst + "\t");
                 minFlag = false;
                 continue;
             }
             stack.pop();
         }
+        return path;
     }
 
     public static void main(String... arg)

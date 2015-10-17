@@ -12,7 +12,7 @@ public class MatrixGenerator {
         this.adjacentMatrix = new int[size][size];
     }
 
-    public void generate() {
+    public int[][] generate() {
         int size = this.size;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -25,6 +25,7 @@ public class MatrixGenerator {
                 }
             }
         }
+        return this.adjacentMatrix;
     }
     public int getSize() {
         return size;
