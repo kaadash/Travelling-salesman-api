@@ -18,10 +18,11 @@ public class MatrixGenerator {
             for (int j = 0; j < size; j++) {
                 if (i == j) {
                     this.adjacentMatrix[i][i] = 0;
-                }
-                else {
+                } else if (j > i) {
                     int random = (int )(Math.random() * 50 + 1);
                     this.adjacentMatrix[i][j] = random;
+                } else {
+                    this.adjacentMatrix[i][j] = this.adjacentMatrix[j][i];
                 }
             }
         }
