@@ -16,6 +16,8 @@ public class TSPNearestNeighbour
 
     public String tsp(int adjacencyMatrix[][])
     {
+        int adjacent2[][] = adjacencyMatrix;
+        int sum = 0;
         numberOfNodes = adjacencyMatrix[1].length - 1;
         int[] visited = new int[numberOfNodes + 1];
         visited[0] = 1;
@@ -23,7 +25,7 @@ public class TSPNearestNeighbour
         int element, dst = 0, i;
         int min = Integer.MAX_VALUE;
         boolean minFlag = false;
-        path = 0 + "\t";
+        path = "a";
 //        System.out.print(1 + "\t");
 
         while (!stack.isEmpty())
@@ -48,13 +50,20 @@ public class TSPNearestNeighbour
             {
                 visited[dst] = 1;
                 stack.push(dst);
-                path += dst + "\t";
+                path += (char)(dst+97);
 //                System.out.print(dst + "\t");
                 minFlag = false;
                 continue;
             }
             stack.pop();
         }
+        path += "a";
+        System.out.print("sum = ");
+        for (int j = 0; j < path.length()-1; j++){
+            char[] c = path.toCharArray();
+            sum += adjacencyMatrix[c[j]-97][c[j+1]-97];
+        }
+        path += "\t" + sum;
         return path;
     }
 
